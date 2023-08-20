@@ -15,6 +15,11 @@
         <router-link to="/vmodel">vmodel</router-link>
       </button>
     </div>
+    <div>
+      <button>
+        <router-link to="/notepad">notepad</router-link>
+      </button>
+    </div>
     <img src="../../assets/logo.png" alt="">
     <h1>这是preload初始化页面</h1>
     <p>程序初始化的 动画页面</p>

@@ -6,6 +6,7 @@ import Index from '@/view/index/index'
 import Login from '@/view/login/login'
 import vFor from '@/view/vfor/index'
 import vModel from '@/view/vmodel/index'
+import Notepad from '@/view/notepad/index'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
     path: '/vmodel',
     name: 'vmodel',
     component: vModel
+  },
+  {
+    path: '/notepad',
+    name: 'notepad',
+    component: Notepad
   }
   ]
 })

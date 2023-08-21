@@ -9,7 +9,7 @@
       <ul class="main">
         <li v-for="(item, i) in dataArr" :key="item.id">
           <span>{{ i+1 }}.</span>
-          <span>{{ item.text }}</span>
+          <span>{{ item.text.trim() }}</span>
           <span class="demo" @click="demo(item.id)">X</span>
         </li>
       </ul>
@@ -36,6 +36,11 @@ export default {
   },
   methods: {
     addDataArr () {
+      // console.log(this.val)
+      if (!this.val.trim()) {
+        alert('请输入任务')
+        return
+      }
       // console.log(11)
       var id = +new Date()
       // console.log(id)
@@ -121,5 +126,6 @@ export default {
   .booter{
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
   }
 </style>

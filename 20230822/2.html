@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+      .show{display: block;}
+      .hide{display: none;}
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="isShow=!isShow">控制class类切换盒子的显示与隐藏{{isShow}}</button>
+      <div :class="{ 'show':isShow,hide:!onShow }">盒子是显示还是隐藏</div>
+      <button @click="changeClassArr">控制class类切换盒子的显示与隐藏{{isShow}}</button>
+      <div :class="classArr">盒子是显示还是隐藏</div>
+    </div>
+  </body>
+  <script>
+    var Vue = new Vue({
+      el: '#app',
+      data () {
+        return {
+          isShow: true,
+          onShow: true,
+          classArr: ['show'],
+          dis: 'block'
+        }
+      },
+      methods: {
+        changeClassArr () {
+          // 如果数组中是show 则改成hide
+          // 如果数组中是hide 则改成show
+          // console.log(this.classArr)
+          var temp = this.classArr.pop()
+          // pop()数组方法,删除数组末尾第一个并返回 删除的这个值
+          // console.log(temp)
+          temp === "show" ? this.classArr.push("hide") : this.classArr.push("show")
+        }
+      }
+    })
+  </script>
+</html>

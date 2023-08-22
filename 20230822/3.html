@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+    <style>
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="changeStyle">控制style样式切换盒子的显示与隐藏{{isShow}}</button>
+      <div :style="{'background-color':bgc,'color':c,'display':isShow}">盒子是显示还是隐藏</div>
+      <button @click="changeShow">控制style样式切换盒子的显示与隐藏{{divStyle.display}}</button>
+      <div :style="divStyle">盒子是显示还是隐藏</div>
+    </div>
+  </body>
+  <script>
+    var Vue = new Vue({
+      el: '#app',
+      data () {
+        return {
+          bgc: 'rgba(255,255,0,1)',
+          c: 'red',
+          isShow: 'block',
+          divStyle: {
+            backgroundColor: 'pink',
+            color: 'blue',
+            display: 'block'
+          }
+        }
+      },
+      methods: {
+        changeStyle () {
+          if(this.isShow == 'block') this.isShow = 'none'
+          else this.isShow = 'block'
+        },
+        changeShow () {
+          if(this.divStyle.display == 'block') this.divStyle.display = 'none'
+          else this.divStyle.display = 'block'
+        }
+      }
+    })
+  </script>
+</html>

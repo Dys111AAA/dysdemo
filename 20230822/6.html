@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for='item in shopcar' :key="item.id">
+          <input type="checkbox" v-model="item.isSelect === '1' ? '1' : '0'">
+          <span>{{ item.name }}</span>
+          <em>￥{{ item.price }}</em>
+          <span><i>-</i><ins>{{ item.num }}</ins><i>+</i></span>
+        </li>
+      </ul>
+      <p>总共买了{{count}}件商品</p>
+    </div>
+  </body>
+  <script>
+    var Vue = new Vue({
+      el: '#app',
+      data () {
+        return {
+          shopcar: [
+            {id: 1, name: '商品1', price: '30.12', num: '5', isSelect: '1'},
+            {id: 2, name: '商品2', price: '28.12', num: '4', isSelect: '1'},
+            {id: 3, name: '商品3', price: '65.12', num: '19', isSelect: '1'},
+            {id: 4, name: '商品4', price: '5.12', num: '2', isSelect: '0'}
+          ]
+        }
+      },
+      methods: {
+      },
+      // 计算属性,专门对现有的data数据做计算,重新获取新的数据.
+      computed: {
+        count () {
+          // 计算属性中 this 指向当前的vue 实例
+          return this.shopcar.reduce((num,item) => {
+            // console.log(item)
+            if(item.isSelect === '1'){
+              num += item.num*1
+            }
+            return num
+          },0)
+          
+        }
+      }
+    })
+  </script>
+</html>

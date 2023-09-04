@@ -1,5 +1,6 @@
 <template>
   <div class="myPage">
+    <button @click="changeProvide">修改数据</button>
     <busA @changeVal="getVal"></busA>
     <busB :dataArr="dataArr" @demoArr="demo"></busB>
     <busC :dataArr="dataArr" @clearAll="clearAll"></busC>
@@ -20,7 +21,23 @@ export default {
       dataArr: [
         {id: 1, text: '跑步锻炼20分钟'},
         {id: 2, text: '游泳锻炼20分钟'}
-      ]
+      ],
+      color: 'red',
+      user: {
+        username: 'zhangsan',
+        age: 18,
+        sex: 1
+      }
+    }
+  },
+  // 共享给子孙组件的数据
+  // 简单数据不会同步更新
+  // 复杂数据可以同步更新，开发中，建议使用复杂数据共享
+  provide () {
+    return {
+      color: this.color, // 简单数据
+      user: this.user, // 复杂数据
+      haha: this.haha
     }
   },
   components: {
@@ -40,6 +57,14 @@ export default {
     },
     demo (val) {
       this.dataArr = val
+    },
+    changeProvide () {
+      this.color = 'blue'
+      this.user.username = 'lisi'
+    },
+    // 定义提供给子孙组件使用的方法
+    haha () {
+      console.log('使用父组件的haha事件')
     }
   }
 }

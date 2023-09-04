@@ -12,6 +12,9 @@ import ButtonTabbar from './components/ButtonTabbar/tabBar.vue'
 Vue.component('VueBtn', vueBtn)
 Vue.component('ButtonTabbar', ButtonTabbar)
 
+const bus = new Vue()
+Vue.prototype.$bus = bus
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
